@@ -25,6 +25,7 @@ const nav = [{
 ];
 
 
+
 const booksRouter = require('./src/routes/bookRoutes')(nav);
 const authorsRouter = require('./src/routes/authorRoutes')(nav);
 const loginRouter = require('./src/routes/loginRoutes')(nav);
@@ -39,7 +40,7 @@ app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 
 
-app.get(`/`, function (req, res) {
+app.get(`/`, function(req, res) {
     res.render("index", {
         nav,
         title: 'Library'
