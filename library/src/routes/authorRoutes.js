@@ -2,42 +2,42 @@ const express = require('express');
 //2nd method of route handler commonly used
 const authorRouter = express.Router();
 function router(nav){
-var authors = [{
+var Authors = [{
         name: "Tom and Jerry",
         book: "Joseph Barbara",
         Genre: "Cartoon",
-        img: "tom.jpg"
+        Image: "tom.jpg"
     },
     {
         name: "Harry Potter",
         book: "J.K.Rowling",
         Genre: "Fantasy",
-        img: "hp.jpg"
+        Image: "hp.jpg"
     },
     {
         name: "One Hundred Years Of Solitude",
         book: "Gabriel Garcia Marquez",
         Genre: "Fiction",
-        img: "sol.jpg"
+        Image: "sol.jpg"
     }
 ]
 authorRouter.get(`/`, function(req, res) {
-    res.render("authors", {
+    res.render("Authors", {
         nav: [{ link: '/books', name: 'Books' },
-            { link: '/authors', name: 'Authors' }
+            { link: '/Authors', name: 'Authors' }
         ],
         title: 'Authors Page',
-        authors
+        Authors
 
     });
 });
 authorRouter.get('/:id', function(req, res) {
 
     const id = req.params.id
-    res.render('author', {
+    res.render('Author', {
         nav,
         name: 'Author Bio',
-        author: authors[id]
+        Author: Authors[id]
 
     });
     

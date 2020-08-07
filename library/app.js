@@ -20,24 +20,33 @@ const nav = [{
     {
         link: '/signup',
         name: 'Sign Up'
+    },
+
+    {
+        link: "/admin",
+        name: "Add Book"
     }
 
 ];
-
-
 
 const booksRouter = require('./src/routes/bookRoutes')(nav);
 const authorsRouter = require('./src/routes/authorRoutes')(nav);
 const loginRouter = require('./src/routes/loginRoutes')(nav);
 const signupRouter = require('./src/routes/signupRoutes')(nav);
+const adminRouter=require('./src/routes/adminRoutes')(nav);
 
 app.use(express.static('./public'));
+app.use(express.urlencoded({extended:true}));
+//app.use(express.urlencoded({ useNewUrlParser: true } ));
+//app.use(express.urlencoded({ useUnifiedTopology: true }));
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 app.use('/books', booksRouter);
 app.use('/authors', authorsRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
+app.use('/admin',adminRouter);
+
 
 
 app.get(`/`, function(req, res) {
